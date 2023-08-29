@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AzurChess - 鸣谢</title>
+    <link href="Acknowledgement/index.css" type="text/css" rel="stylesheet" />
+    <link rel="icon" href="Acknowledgement/Icon.png">
+</head>
+<body>
+    <div id="container">
+        <img id="logo" src="Acknowledgement/Logo.png" alt="AzurChess Logo">
+        <h1>鸣谢</h1>
+        <div id="scrollList"></div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            var listContainer = document.getElementById('scrollList');
+            var listHTML = '';
+            
+            // 读取List.txt
+            fetch('Acknowledgement/List.txt').then(function(response) {
+                return response.text();
+            }).then(function(text) {
+                var members = text.split('\n');
+                members.forEach(function(member) {
+                    if (member !== '') {
+                        listHTML += '<p>' + member + '</p>';
+                    }
+                });
+                listContainer.innerHTML = listHTML;
+                
+                // 添加打赏者和开发者
+                fetch('Acknowledgement/Developer.txt').then(function(response) {
+                    return  response.text();
+                }).then(function(text) {
+                    var developers = text.split('\n');
+                    developers.forEach(function(developer) {
+                        if (developer !== '') {
+                            listHTML += '<p><strong>赞助者和开发者 - </strong>' + developer + '</p>';
+                        }
+                    });
+                    listContainer.innerHTML = listHTML;
+                });
+            });
+        };
+    </script>
+</body>
+</html>
