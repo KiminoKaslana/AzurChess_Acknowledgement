@@ -9,41 +9,56 @@
 <body>
     <div id="container">
         <img id="logo" src="Acknowledgement/Logo.png" alt="AzurChess Logo">
+        <div id="designer" class="subContainer">
+            <a href="https://space.bilibili.com/404682135">原型设计师 - @韦德WAYD</a>
+        </div>
+        <div id="mainDev" class="subContainer">
+            <a href="https://space.bilibili.com/35762009">主要开发者 - @SylviaKaslana</a>
+        </div>
         <h1>鸣谢</h1>
-        <div id="scrollList"></div>
+        <div id="developers" class="subContainer"></div>
+        <div id="scrollList" class="subContainer"></div>
     </div>
 
     <script>
-        window.onload = function() {
+        window.onload = function () {
+            var developerContainer = document.getElementById('developers');
             var listContainer = document.getElementById('scrollList');
             var listHTML = '';
-            
-            // 读取List.txt
-            fetch('Acknowledgement/List.txt').then(function(response) {
+
+            // 添加开发者
+            fetch('Acknowledgement/Developer.txt').then(function (response) {
                 return response.text();
-            }).then(function(text) {
+            }).then(function (text) {
+                var developers = text.split('\n');
+                developers.forEach(function (developer) {
+                    if (developer !== '') {
+                        listHTML += '<p><strong>Developer - </strong>@' + developer + '</p>';
+                    }
+                });
+                developerContainer.innerHTML = listHTML;
+            });
+
+            // 读取List.txt
+            fetch('Acknowledgement/List.txt').then(function (response) {
+                return response.text();
+            }).then(function (text) {
                 var members = text.split('\n');
-                members.forEach(function(member) {
+                members.forEach(function (member) {
                     if (member !== '') {
                         listHTML += '<p>' + member + '</p>';
                     }
                 });
                 listContainer.innerHTML = listHTML;
-                
-                // 添加打赏者和开发者
-                fetch('Acknowledgement/Developer.txt').then(function(response) {
-                    return  response.text();
-                }).then(function(text) {
-                    var developers = text.split('\n');
-                    developers.forEach(function(developer) {
-                        if (developer !== '') {
-                            listHTML += '<p><strong>赞助者和开发者 - </strong>' + developer + '</p>';
-                        }
-                    });
-                    listContainer.innerHTML = listHTML;
-                });
             });
+
+
         };
     </script>
+    <footer>
+        <text style="font-size:large;font-weight:bold;line-height:35px">特别说明</text>
+        <text>AzurChess是碧蓝航线的同人游戏，游戏内所有角色及音乐版权均属于碧蓝航线。请知悉。</text>
+    </footer>
 </body>
+
 </html>

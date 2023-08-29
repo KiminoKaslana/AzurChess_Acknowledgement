@@ -5,8 +5,18 @@ body {
     color: #FFFFFF;
 }
 
+a{
+    transition:all ease 0.5s;
+    color:white;
+    text-decoration:none;
+}
+
+a:hover{
+    color:rgb(255, 164, 164);
+}
+
 #container {
-    max-width: 1000px;
+    max-width: 800px;
     margin: auto;
     padding: 20px;
     text-align: center;
@@ -17,6 +27,7 @@ h1 {
     font-family: "华文中宋";
     font-weight: bold;
     margin-bottom: 20px;
+    user-select: none;
 }
 
 #logo {
@@ -25,6 +36,18 @@ h1 {
     margin: 0 auto;
     width: 40%;
 }
+
+.subContainer {
+    transition: all ease 1s;
+    margin-top: 30px;
+    background-color: rgba(0,0,0,0.6);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+    .subContainer:hover {
+        background-color: rgba(0,0,0,0.4);
+    }
 
 #scrollList {
     max-height: 300px;
@@ -35,7 +58,18 @@ h1 {
     background-color: rgba(0, 0, 0, 0.6);
 }
 
-#scrollList p {
-    margin: 0;
-    padding: 5px;
+    #scrollList p {
+        margin: 0;
+        padding: 5px;
+    }
+
+footer {
+    left: 50%;
+    transform: translate(-50%, 0%);
+    position: absolute;
+    padding: 20px;
+    bottom: 0;
+    text-align: center;
+    display:flex;
+    flex-direction:column;
 }
