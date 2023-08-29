@@ -39,6 +39,8 @@
                 developerContainer.innerHTML = listHTML;
             });
 
+
+            listHTML = '';
             // 读取List.txt
             fetch('Acknowledgement/List.txt').then(function (response) {
                 return response.text();
