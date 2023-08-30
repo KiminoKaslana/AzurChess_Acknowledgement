@@ -1,3 +1,4 @@
 ﻿Developer
 Sponsor
 Tester
+Special
